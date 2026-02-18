@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Web Python Live</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Studio Web Python Live</h1>
+    <div class="actions">
+      <input type="file" id="htmlFile" accept=".html,.htm,text/html" />
+      <input type="file" id="cssFile" accept=".css,text/css" />
+      <input type="file" id="jsFile" accept=".js,text/javascript" />
+      <button id="loadFiles">Charger fichiers</button>
+      <button id="forceRender">Forcer rendu</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="left">
+      <div class="tabs">
+        <button class="tab active" data-tab="html">HTML</button>
+        <button class="tab" data-tab="css">CSS</button>
+        <button class="tab" data-tab="js">JavaScript</button>
+      </div>
+      <div class="editor" data-editor="html">
+        <textarea id="htmlEditor"></textarea>
+        <pre id="htmlPreview" class="highlight"></pre>
+      </div>
+      <div class="editor hidden" data-editor="css">
+        <textarea id="cssEditor"></textarea>
+        <pre id="cssPreview" class="highlight"></pre>
+      </div>
+      <div class="editor hidden" data-editor="js">
+        <textarea id="jsEditor"></textarea>
+        <pre id="jsPreview" class="highlight"></pre>
+      </div>
+    </section>
+
+    <section class="center">
+      <div class="canvas-toolbar">
+        <button id="addDiv">+ Div</button>
+        <button id="addBtn">+ Button</button>
+        <button id="dup">Dupliquer</button>
+        <button id="del">Supprimer</button>
+        <button id="lock">Verrouiller</button>
+      </div>
+      <iframe id="frame"></iframe>
+    </section>
+
+    <section class="right">
+      <h2>100 options utiles</h2>
+      <div id="options"></div>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

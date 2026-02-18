@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, Arial, sans-serif; background: #0a1220; color: #dbe7ff; }
+.topbar { display:flex; justify-content:space-between; gap:10px; padding:10px; border-bottom:1px solid #25324e; }
+.actions { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+button { background:#1c2a45; border:1px solid #354b72; color:#e4eeff; border-radius:8px; padding:6px 10px; cursor:pointer; }
+.grid { display:grid; grid-template-columns: 42% 38% 20%; height: calc(100vh - 60px); }
+.left,.center,.right { min-height:0; }
+.left { border-right:1px solid #25324e; display:flex; flex-direction:column; }
+.right { border-left:1px solid #25324e; overflow:auto; padding:8px; }
+.tabs { display:flex; gap:6px; padding:8px; border-bottom:1px solid #25324e; }
+.tab.active { background:#2563eb; }
+.editor { position:relative; flex:1; }
+.editor.hidden { display:none; }
+textarea, .highlight { position:absolute; inset:0; margin:0; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:13px; line-height:1.45; white-space:pre; overflow:auto; }
+textarea { background:transparent; color:transparent; caret-color:#fff; border:0; outline:none; }
+.highlight { pointer-events:none; background:#0b162a; }
+.line { display:block; }
+.line.active-line { background: rgba(249,115,22,0.12); }
+.line.changed-line { animation: blinkRed 0.6s linear infinite; background: rgba(255,0,0,0.18); }
+@keyframes blinkRed { 0%,100%{ background: rgba(255,0,0,0.25);} 50% { background: rgba(255,0,0,0.05);} }
+.token-tag { color:#60a5fa; }
+.token-attr { color:#fbbf24; }
+.token-string { color:#34d399; }
+.token-comment { color:#64748b; }
+.token-keyword { color:#a78bfa; }
+.canvas-toolbar { padding:8px; border-bottom:1px solid #25324e; display:flex; gap:6px; flex-wrap:wrap; }
+#frame { width:100%; height:calc(100% - 48px); border:0; background:#fff; }
+.option { margin-bottom:8px; padding:8px; background:#111c31; border:1px solid #2a3f66; border-radius:8px; }
+.option label { display:block; font-size:12px; color:#b8c7e8; margin-bottom:4px; }
+.option input { width:100%; }
+@media (max-width: 1200px) { .grid { grid-template-columns:1fr; grid-template-rows:40% 35% 25%; } }
