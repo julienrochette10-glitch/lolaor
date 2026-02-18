@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Éditeur Web Modulaire Live</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Éditeur Web Modulaire Live</h1>
+    <div class="header-actions">
+      <button id="runBtn">Forcer le rendu</button>
+      <button id="formatBtn">Formater HTML</button>
+      <label class="toggle">
+        <input type="checkbox" id="designMode" checked />
+        <span>Mode visuel</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="editor-panel">
+      <div class="tabs" role="tablist" aria-label="Langages">
+        <button class="tab active" data-tab="html">HTML</button>
+        <button class="tab" data-tab="css">CSS</button>
+        <button class="tab" data-tab="js">JavaScript</button>
+      </div>
+
+      <div class="editor-stack">
+        <article class="editor-card active" data-editor="html">
+          <div class="editor-toolbar">
+            <span>Source HTML</span>
+            <button data-insert="<section class='bloc'>Nouveau bloc</section>">+ Section</button>
+            <button data-insert="<button class='btn'>Bouton</button>">+ Bouton</button>
+          </div>
+          <div class="editor-wrap" id="htmlWrap">
+            <pre aria-hidden="true" class="highlight" id="htmlHighlight"></pre>
+            <textarea id="htmlEditor" spellcheck="false"></textarea>
+          </div>
+        </article>
+
+        <article class="editor-card" data-editor="css">
+          <div class="editor-toolbar">
+            <span>Source CSS</span>
+            <button data-insert-css=".bloc {\n  padding: 16px;\n  border-radius: 8px;\n}">+ Règle</button>
+            <button data-insert-css=":root {\n  --accent: #0ea5e9;\n}">+ Variable</button>
+          </div>
+          <div class="editor-wrap" id="cssWrap">
+            <pre aria-hidden="true" class="highlight" id="cssHighlight"></pre>
+            <textarea id="cssEditor" spellcheck="false"></textarea>
+          </div>
+        </article>
+
+        <article class="editor-card" data-editor="js">
+          <div class="editor-toolbar">
+            <span>Source JavaScript</span>
+            <button data-insert-js="document.querySelectorAll('.btn').forEach(btn => {\n  btn.addEventListener('click', () => alert('OK'));\n});">+ Fonction</button>
+            <button data-insert-js="console.log('script actif');">+ Log</button>
+          </div>
+          <div class="editor-wrap" id="jsWrap">
+            <pre aria-hidden="true" class="highlight" id="jsHighlight"></pre>
+            <textarea id="jsEditor" spellcheck="false"></textarea>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="preview-panel">
+      <div class="preview-toolbar">
+        <strong>Canvas visuel</strong>
+        <div class="tool-group">
+          <button id="addDiv">Ajouter Div</button>
+          <button id="addButton">Ajouter Button</button>
+          <button id="duplicateNode">Dupliquer</button>
+          <button id="deleteNode">Supprimer</button>
+          <button id="lockNode">Verrouiller</button>
+        </div>
+      </div>
+      <iframe id="preview"></iframe>
+      <p class="hint">Astuce : clique un élément pour le sélectionner, puis glisse pour déplacer. Utilise la poignée en bas à droite pour redimensionner.</p>
+    </section>
+  </main>
+
+  <template id="defaultHtml">
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <main class="layout-demo">
+      <h2>Bienvenue 👋</h2>
+      <p>Éditez le code à gauche ou manipulez les éléments ici.</p>
+      <button class="btn">Clique-moi</button>
+    </main>
+  </body>
+</html>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
